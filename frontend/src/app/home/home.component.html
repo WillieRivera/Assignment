@@ -1,0 +1,17 @@
+<div class="overlay" *ngIf="displayOverlay">
+    <div class="loader"></div>
+</div>
+<h1>Please Input Post ID</h1>
+<form>
+    <div class="id-box">
+        <input type="number" name="post_id" [(ngModel)]="id" required pattern="^[1-9][0-9]?" #validator="ngModel">
+        <label>ID</label>
+    </div>
+    <div class="validation-error" [style.opacity]="id && validator.invalid ? '1' : '0'">
+        ID is invalid.
+    </div>
+    <div class="response-error" [style.opacity]="showErrorMsg ? '1' : '0'">Failed to get the content of post with id {{id}}. Please try again.</div>
+    <div class="button" (click)="onSend()">
+        Send
+    </div>
+</form>
